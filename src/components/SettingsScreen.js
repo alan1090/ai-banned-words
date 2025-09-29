@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const SettingsScreen = ({ onContinue, gameState }) => {
   const [settings, setSettings] = useState({
@@ -6,14 +6,14 @@ const SettingsScreen = ({ onContinue, gameState }) => {
     numberOfRounds: 3,
     timePerRound: 60,
     skipsPerRound: 3,
-    category: 'general',
-    difficulty: 'medium',
-    language: 'english'
+    category: "general",
+    difficulty: "medium",
+    language: "english",
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     gameState.updateGameState({
       totalRounds: settings.numberOfRounds,
       category: settings.category,
@@ -21,76 +21,98 @@ const SettingsScreen = ({ onContinue, gameState }) => {
       language: settings.language,
       totalTime: settings.timePerRound,
       timeLeft: settings.timePerRound,
-      skipsPerRound: settings.skipsPerRound === 10 ? Infinity : settings.skipsPerRound,
-      currentSkips: settings.skipsPerRound === 10 ? Infinity : settings.skipsPerRound
+      skipsPerRound:
+        settings.skipsPerRound === 10 ? Infinity : settings.skipsPerRound,
+      currentSkips:
+        settings.skipsPerRound === 10 ? Infinity : settings.skipsPerRound,
     });
 
     onContinue();
   };
 
   const handleTimeOptionClick = (time) => {
-    setSettings(prev => ({ ...prev, timePerRound: time }));
+    setSettings((prev) => ({ ...prev, timePerRound: time }));
   };
 
   const handleSkipOptionClick = (skips) => {
-    setSettings(prev => ({ ...prev, skipsPerRound: skips }));
+    setSettings((prev) => ({ ...prev, skipsPerRound: skips }));
   };
 
   return (
     <div id="settingsScreen" className="screen active">
       <div className="settings-card">
-        <h2><i className="fas fa-cog"></i> Game Setup</h2>
-        <form id="settingsForm" className="settings-form" onSubmit={handleSubmit}>
+        <h2>
+          <i className="fas fa-cog"></i> Game Setup
+        </h2>
+        <form
+          id="settingsForm"
+          className="settings-form"
+          onSubmit={handleSubmit}
+        >
           <div className="form-row">
             <div className="form-group">
-              <label htmlFor="numberOfPlayers"><i className="fas fa-users"></i> Players</label>
+              <label htmlFor="numberOfPlayers">
+                <i className="fas fa-users"></i> Players
+              </label>
               <input
                 type="number"
                 id="numberOfPlayers"
                 min="2"
                 max="8"
                 value={settings.numberOfPlayers}
-                onChange={(e) => setSettings(prev => ({ 
-                  ...prev, 
-                  numberOfPlayers: parseInt(e.target.value) 
-                }))}
+                onChange={(e) =>
+                  setSettings((prev) => ({
+                    ...prev,
+                    numberOfPlayers: parseInt(e.target.value),
+                  }))
+                }
               />
             </div>
             <div className="form-group">
-              <label htmlFor="numberOfRounds"><i className="fas fa-sync-alt"></i> Rounds</label>
+              <label htmlFor="numberOfRounds">
+                <i className="fas fa-sync-alt"></i> Rounds
+              </label>
               <input
                 type="number"
                 id="numberOfRounds"
                 min="1"
                 max="10"
                 value={settings.numberOfRounds}
-                onChange={(e) => setSettings(prev => ({ 
-                  ...prev, 
-                  numberOfRounds: parseInt(e.target.value) 
-                }))}
+                onChange={(e) =>
+                  setSettings((prev) => ({
+                    ...prev,
+                    numberOfRounds: parseInt(e.target.value),
+                  }))
+                }
               />
             </div>
           </div>
 
           <div className="form-row">
             <div className="form-group">
-              <label htmlFor="timePerRound"><i className="fas fa-clock"></i> Time per Round (sec)</label>
+              <label htmlFor="timePerRound">
+                <i className="fas fa-clock"></i> Time per Round (sec)
+              </label>
               <input
                 type="number"
                 id="timePerRound"
                 min="30"
                 max="180"
                 value={settings.timePerRound}
-                onChange={(e) => setSettings(prev => ({ 
-                  ...prev, 
-                  timePerRound: parseInt(e.target.value) 
-                }))}
+                onChange={(e) =>
+                  setSettings((prev) => ({
+                    ...prev,
+                    timePerRound: parseInt(e.target.value),
+                  }))
+                }
               />
               <div className="time-options">
-                {[30, 60, 90, 120].map(time => (
+                {[30, 60, 90, 120].map((time) => (
                   <div
                     key={time}
-                    className={`time-option ${settings.timePerRound === time ? 'active' : ''}`}
+                    className={`time-option ${
+                      settings.timePerRound === time ? "active" : ""
+                    }`}
                     onClick={() => handleTimeOptionClick(time)}
                   >
                     {time}s
@@ -99,26 +121,32 @@ const SettingsScreen = ({ onContinue, gameState }) => {
               </div>
             </div>
             <div className="form-group">
-              <label htmlFor="skipsPerRound"><i className="fas fa-forward"></i> Skips per Round</label>
+              <label htmlFor="skipsPerRound">
+                <i className="fas fa-forward"></i> Skips per Round
+              </label>
               <input
                 type="number"
                 id="skipsPerRound"
                 min="0"
                 max="10"
                 value={settings.skipsPerRound}
-                onChange={(e) => setSettings(prev => ({ 
-                  ...prev, 
-                  skipsPerRound: parseInt(e.target.value) 
-                }))}
+                onChange={(e) =>
+                  setSettings((prev) => ({
+                    ...prev,
+                    skipsPerRound: parseInt(e.target.value),
+                  }))
+                }
               />
               <div className="skip-options">
-                {[0, 3, 5, 10].map(skips => (
+                {[0, 3, 5, 10].map((skips) => (
                   <div
                     key={skips}
-                    className={`skip-option ${settings.skipsPerRound === skips ? 'active' : ''}`}
+                    className={`skip-option ${
+                      settings.skipsPerRound === skips ? "active" : ""
+                    }`}
                     onClick={() => handleSkipOptionClick(skips)}
                   >
-                    {skips === 10 ? 'Unlimited' : skips}
+                    {skips === 10 ? "Unlimited" : skips}
                   </div>
                 ))}
               </div>
@@ -127,11 +155,15 @@ const SettingsScreen = ({ onContinue, gameState }) => {
 
           <div className="form-row">
             <div className="form-group">
-              <label htmlFor="category"><i className="fas fa-folder"></i> Category</label>
+              <label htmlFor="category">
+                <i className="fas fa-folder"></i> Category
+              </label>
               <select
                 id="category"
                 value={settings.category}
-                onChange={(e) => setSettings(prev => ({ ...prev, category: e.target.value }))}
+                onChange={(e) =>
+                  setSettings((prev) => ({ ...prev, category: e.target.value }))
+                }
               >
                 <option value="general">🎲 General</option>
                 <option value="animals">🐾 Animals</option>
@@ -145,11 +177,18 @@ const SettingsScreen = ({ onContinue, gameState }) => {
               </select>
             </div>
             <div className="form-group">
-              <label htmlFor="difficulty"><i className="fas fa-bolt"></i> Difficulty</label>
+              <label htmlFor="difficulty">
+                <i className="fas fa-bolt"></i> Difficulty
+              </label>
               <select
                 id="difficulty"
                 value={settings.difficulty}
-                onChange={(e) => setSettings(prev => ({ ...prev, difficulty: e.target.value }))}
+                onChange={(e) =>
+                  setSettings((prev) => ({
+                    ...prev,
+                    difficulty: e.target.value,
+                  }))
+                }
               >
                 <option value="easy">😊 Easy</option>
                 <option value="medium">😐 Medium</option>
@@ -157,11 +196,15 @@ const SettingsScreen = ({ onContinue, gameState }) => {
               </select>
             </div>
             <div className="form-group">
-              <label htmlFor="language"><i className="fas fa-globe"></i> Language</label>
+              <label htmlFor="language">
+                <i className="fas fa-globe"></i> Language
+              </label>
               <select
                 id="language"
                 value={settings.language}
-                onChange={(e) => setSettings(prev => ({ ...prev, language: e.target.value }))}
+                onChange={(e) =>
+                  setSettings((prev) => ({ ...prev, language: e.target.value }))
+                }
               >
                 <option value="english">🇺🇸 English</option>
                 <option value="spanish">🇪🇸 Español</option>

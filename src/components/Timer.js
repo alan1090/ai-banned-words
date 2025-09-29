@@ -1,9 +1,13 @@
-import React from 'react';
+import React from "react";
 
 const Timer = ({ gameState }) => {
   const progress = (gameState.timeLeft / gameState.totalTime) * 283;
-  const strokeColor = gameState.timeLeft <= 10 ? '#ff4757' : 
-                     gameState.timeLeft <= 30 ? '#ffa502' : '#667eea';
+  const strokeColor =
+    gameState.timeLeft <= 10
+      ? "#ff4757"
+      : gameState.timeLeft <= 30
+      ? "#ffa502"
+      : "#667eea";
 
   return (
     <div className="timer-container">
@@ -17,7 +21,7 @@ const Timer = ({ gameState }) => {
             r="45"
             style={{
               stroke: strokeColor,
-              strokeDashoffset: 283 - progress
+              strokeDashoffset: 283 - progress,
             }}
           ></circle>
         </svg>

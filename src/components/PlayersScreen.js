@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const PlayersScreen = ({ onStartGame, gameState }) => {
   const [playerNames, setPlayerNames] = useState(
@@ -7,10 +7,10 @@ const PlayersScreen = ({ onStartGame, gameState }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    const players = playerNames.map(name => name.trim() || 'Anonymous');
+
+    const players = playerNames.map((name) => name.trim() || "Anonymous");
     const scores = new Array(players.length).fill(0);
-    
+
     gameState.updateGameState({
       players,
       scores,
@@ -18,7 +18,7 @@ const PlayersScreen = ({ onStartGame, gameState }) => {
       currentRound: 0,
       currentPlayerIndex: -1,
       currentTurn: 0,
-      wordsUsed: new Set()
+      wordsUsed: new Set(),
     });
 
     onStartGame();
@@ -33,7 +33,9 @@ const PlayersScreen = ({ onStartGame, gameState }) => {
   return (
     <div id="playersScreen" className="screen active">
       <div className="players-card">
-        <h2><i className="fas fa-user-edit"></i> Enter Player Names</h2>
+        <h2>
+          <i className="fas fa-user-edit"></i> Enter Player Names
+        </h2>
         <form id="playersForm" className="players-form" onSubmit={handleSubmit}>
           {playerNames.map((name, index) => (
             <div key={index} className="form-group">

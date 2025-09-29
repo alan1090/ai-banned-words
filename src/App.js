@@ -1,45 +1,45 @@
-import React, { useState, useEffect } from 'react';
-import './App.css';
-import StartScreen from './components/StartScreen';
-import SettingsScreen from './components/SettingsScreen';
-import PlayersScreen from './components/PlayersScreen';
-import GameScreen from './components/GameScreen';
-import ResultsScreen from './components/ResultsScreen';
-import { useGameState } from './hooks/useGameState';
+import React, { useState } from "react";
+import "./App.css";
+import StartScreen from "./components/StartScreen";
+import SettingsScreen from "./components/SettingsScreen";
+import PlayersScreen from "./components/PlayersScreen";
+import GameScreen from "./components/GameScreen";
+import ResultsScreen from "./components/ResultsScreen";
+import { useGameState } from "./hooks/useGameState";
 
 const APP_VERSION = "1.2.0";
 console.log(`[BannedWords] App Version: ${APP_VERSION}`);
 
 function App() {
-  const [currentScreen, setCurrentScreen] = useState('start');
+  const [currentScreen, setCurrentScreen] = useState("start");
   const gameState = useGameState();
 
   const renderScreen = () => {
     switch (currentScreen) {
-      case 'start':
-        return <StartScreen onStart={() => setCurrentScreen('settings')} />;
-      case 'settings':
+      case "start":
+        return <StartScreen onStart={() => setCurrentScreen("settings")} />;
+      case "settings":
         return (
           <SettingsScreen
-            onContinue={() => setCurrentScreen('players')}
+            onContinue={() => setCurrentScreen("players")}
             gameState={gameState}
           />
         );
-      case 'players':
+      case "players":
         return (
           <PlayersScreen
-            onStartGame={() => setCurrentScreen('game')}
+            onStartGame={() => setCurrentScreen("game")}
             gameState={gameState}
           />
         );
-      case 'game':
+      case "game":
         return (
           <GameScreen
-            onEndGame={() => setCurrentScreen('results')}
+            onEndGame={() => setCurrentScreen("results")}
             gameState={gameState}
           />
         );
-      case 'results':
+      case "results":
         return (
           <ResultsScreen
             onPlayAgain={() => {
@@ -48,16 +48,16 @@ function App() {
                 currentRound: 0,
                 currentPlayerIndex: -1,
                 wordsUsed: new Set(),
-                gameActive: true
+                gameActive: true,
               });
-              setCurrentScreen('game');
+              setCurrentScreen("game");
             }}
-            onNewGame={() => setCurrentScreen('start')}
+            onNewGame={() => setCurrentScreen("start")}
             gameState={gameState}
           />
         );
       default:
-        return <StartScreen onStart={() => setCurrentScreen('settings')} />;
+        return <StartScreen onStart={() => setCurrentScreen("settings")} />;
     }
   };
 
