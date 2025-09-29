@@ -1,41 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AI Banned Words Game - Debug</title>
-    <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            padding: 40px; 
-            text-align: center; 
-            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-            color: white;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .debug-box {
-            background: rgba(255,255,255,0.1);
-            padding: 30px;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-        }
-    </style>
-</head>
-<body>
-    <div class="debug-box">
-        <h1>🚀 AI Banned Words Game</h1>
-        <p>If you can see this, HTML is loading but React is not.</p>
-        <p>Check the browser console (F12) for JavaScript errors.</p>
-        <p id="js-status">JavaScript: Loading...</p>
-    </div>
-
-    <script>
-        // Test if JavaScript is working
-        document.getElementById('js-status').textContent = 'JavaScript: ✅ Working!';
-        console.log('Basic JavaScript is working');
-    </script>
-</body>
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="AI Banned Words Game - A fun word guessing game with AI-generated words"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <title>AI Banned Words Game</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  </body>
 </html>
