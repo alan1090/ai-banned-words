@@ -1,4 +1,6 @@
 const callDeepSeek = async (prompt) => {
+  console.log(`[DeepSeekAPI] Sending request to API route`);
+  
   try {
     const response = await fetch('/api/generate-word', {
       method: 'POST',
@@ -8,15 +10,26 @@ const callDeepSeek = async (prompt) => {
       body: JSON.stringify({ prompt }),
     });
 
+    console.log(`[DeepSeekAPI] Response status: ${response.status}`);
+
     if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.error || `API request failed: ${response.status}`);
+      let errorMessage = `API request failed: ${response.status}`;
+      try {
+        const errorData = await response.json();
+        errorMessage = errorData.error || errorMessage;
+      } catch (e) {
+        errorMessage = response.statusText || errorMessage;
+      }
+      throw new Error(errorMessage);
     }
 
     const data = await response.json();
+    console.log(`[DeepSeekAPI] Success, received data`);
     return data;
 
   } catch (error) {
+    console.error(`[DeepSeekAPI] Error:`, error);
+    
     if (error.message.includes('Failed to fetch') || error.message.includes('NetworkError')) {
       throw new Error("Network error: Unable to connect to API. Please check your internet connection.");
     }
