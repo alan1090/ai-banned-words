@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import './Game.css';
 import StartScreen from './components/StartScreen';
 import SettingsScreen from './components/SettingsScreen';
 import PlayersScreen from './components/PlayersScreen';
@@ -15,7 +14,6 @@ function App() {
   const [currentScreen, setCurrentScreen] = useState('start');
   const gameState = useGameState();
 
-  // Remove any async from render methods
   const renderScreen = () => {
     switch (currentScreen) {
       case 'start':
