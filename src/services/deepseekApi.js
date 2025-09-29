@@ -1,5 +1,5 @@
 const callDeepSeek = async (prompt) => {
-  const API_KEY = process.env.REACT_APP_DEEPSEEK_API_KEY;
+  const API_KEY = process.env.DEEPSEEK_API_KEY;
 
   if (!API_KEY) {
     throw new Error("API key not configured. Please check your environment variables.");
