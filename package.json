@@ -1,6 +1,7 @@
 {
-  "name": "ai-banned-words-game",
+  "name": "ai-banned-words",
   "version": "1.2.0",
+  "homepage": ".",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
