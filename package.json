@@ -1,7 +1,7 @@
 {
   "name": "ai-banned-words",
-  "homepage": "https://banned-words-8nnw0x9d4-alans-projects-faf9e2a2.vercel.app",
   "version": "1.2.0",
+  "homepage": ".",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
